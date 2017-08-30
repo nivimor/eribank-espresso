@@ -11,14 +11,14 @@ node {
     if(isUnix()){
       branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     } else {
-      branchName = bat(script: 'git rev-parse --abbrev-ref HEAD', returnStatus: true) == 0
+      branchName = bat(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
     }
 
     def commitMsg
     if(isUnix()){
           commitMsg = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
         } else {
-          commitMsg = bat(script: 'git log -1 --pretty=%%B', returnStatus: true) == 0
+          commitMsg = bat(script: 'git log -1 --pretty=%%B', returnStdout: true).trim()
         }
         echo "this is the msg ${commitMsg}"
 
