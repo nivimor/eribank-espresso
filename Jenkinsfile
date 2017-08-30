@@ -13,7 +13,7 @@ node {
     } else {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     }
-    bat(\echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}\)
+    bat(/echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}/)
 
     def commitMsg
     if(isUnix()){
