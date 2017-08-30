@@ -11,20 +11,18 @@ node {
     if(isUnix()){
       branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     } else {
-      branchName = bat(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+      branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     }
 
     def commitMsg
     if(isUnix()){
           commitMsg = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
         } else {
-          commitMsg = bat(script: 'git log -1 --pretty=%%B', returnStdout: true).trim()
+          commitMsg = bat(returnStdout: true, script: 'git log -1 --pretty=%%B').trim()
         }
+        echo "this is the msg ${commitMsg}"
 
-    bat(/for //f /%%msg in (${commitMsg}) do set VAR=/%%msg
-    for //f /%%brn in (${branchName}) do set VAR=/%%brn
-    echo %msg%
-    echo %brn%/)
+    bat(/echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}/)
   stage 'Building the App'
           if(isUnix()){
             sh "./gradlew assembleDebug"
