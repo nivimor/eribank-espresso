@@ -4,7 +4,7 @@ node {
     deleteDir()
   // Checkout code from repository and update any submodules
   checkout([$class: 'GitSCM', branches: [[name: '**']],
-    doGenerateSubmoduleConfigurations: false, extensions: [],
+    doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]],
     submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a8aa2462-fabf-4eb5-bf0b-bd4bec75bdda', url: 'https://github.com/nivimor/eribank-espresso.git']]])
 
     def branchName
