@@ -59,7 +59,7 @@ node {
         bat '''SET PROJECT_PATH="%HOMEPATH\\C:\\Users\\nivi.mor\\AndroidStudioProjects\\eribank-espresso-ci%"
         cd %PROJECT_PATH%
         git checkout master
-        for /f %%i in (\'git merge ${branchName}\') do set VAR=%%i
+        for /f %%i in (\'git merge %branchName%\') do set VAR=%%i
         echo %VAR%
         git push origin master'''
 
