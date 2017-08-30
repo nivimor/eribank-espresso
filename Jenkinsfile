@@ -59,7 +59,8 @@ node {
         bat '''SET PROJECT_PATH="%HOMEPATH\\C:\\Users\\nivi.mor\\AndroidStudioProjects\\eribank-espresso-ci%"
         cd %PROJECT_PATH%
         git checkout master
-        git merge %branchName
+        git merge %branchName%
+        git commit -am "fixed payment issues and merged to master"
         git push origin master'''
 
     stage 'Publishing Artifacts'
