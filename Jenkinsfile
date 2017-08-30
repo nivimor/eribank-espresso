@@ -21,7 +21,7 @@ node {
           commitMsg = bat(script: 'git log -1 --pretty=%%B', returnStdout: true).trim()
         }
         test = echo "this is the msg ${commitMsg}"
-        echo ${test}
+        echo test
 
     bat(/echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}/)
   stage 'Building the App'
