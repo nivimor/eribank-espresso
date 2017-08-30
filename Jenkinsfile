@@ -17,9 +17,9 @@ node {
 
     def commitMsg
     if(isUnix()){
-          commitMsg = sh(returnStdout: true, script: 'git log -1 --pretty=\\"%\\"B').trim()
+          commitMsg = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
         } else {
-          commitMsg = bat(returnStdout: true, script: 'git log -1 --pretty=\\"%\\"B').trim()
+          commitMsg = bat(returnStdout: true, script: 'git log -1 --pretty=%%B').trim()
         }
         echo "this is the msg ${commitMsg}"
     bat'''echo !!! %commitMsg%'''
