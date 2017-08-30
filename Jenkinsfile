@@ -13,7 +13,7 @@ node {
     } else {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     }
-    bat "./scripts/test.bat" %commitMsg% %branchName%
+    bat "./scripts/test.bat" commitMsg branchName
 
     def commitMsg
     if(isUnix()){
@@ -64,7 +64,7 @@ node {
 
 
     stage 'Merging to Master'
-        bat "bat "./scripts/merge-to-master.bat" %commitMsg %branchName%
+        bat "bat "./scripts/merge-to-master.bat" commitMsg branchName
 
     stage 'Publishing Artifacts'
 
