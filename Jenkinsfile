@@ -11,17 +11,17 @@ node {
     if(isUnix()){
       branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     } else {
-      branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+      //branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+      branchName = bat(/git rev-parse --abbrev-ref HEAD'/)
     }
-
 
     def commitMsg
     if(isUnix()){
           commitMsg = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
         } else {
-          commitMsg = bat(returnStdout: true, script: 'git log -1 --pretty=%%B').trim()
+          commitMsg = bat(/git log -1 --pretty=%%B/)
         }
-        echo "this is the msg ${commitMsg}"
+
 
     bat(/echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}/)
   stage 'Building the App'
