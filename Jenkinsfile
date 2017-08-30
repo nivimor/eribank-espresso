@@ -12,7 +12,7 @@ node {
       branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     } else {
       //branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
-      branchName = bat(/git rev-parse --abbrev-ref HEAD'/)
+      branchName = bat(/git rev-parse --abbrev-ref HEAD/)
     }
 
     def commitMsg
