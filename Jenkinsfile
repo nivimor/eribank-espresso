@@ -13,7 +13,7 @@ node {
     } else {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     }
-    echo branchName
+    echo "this is the branch ${branchName}"
 
   stage 'Building the App'
           if(isUnix()){
