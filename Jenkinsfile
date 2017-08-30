@@ -20,10 +20,13 @@ node {
         } else {
           commitMsg = bat(script: 'git log -1 --pretty=%%B', returnStdout: true).trim()
         }
-        test = println "this is the msg ${commitMsg}"
-        println test
 
-    bat(/echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}/)
+    bat(/
+    SET msg = ${commitMsg}
+    SET brn = ${branchName}
+    echo %msg%
+    echo %brn%
+    /)
   stage 'Building the App'
           if(isUnix()){
             sh "./gradlew assembleDebug"
