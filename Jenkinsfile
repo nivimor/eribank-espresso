@@ -56,7 +56,7 @@ node {
 
 
     stage 'Merging to Master'
-        bat '''SET PROJECT_PATH="%HOMEPATH\\C:\\Users\\nivi.mor\\AndroidStudioProjects\\eribank-espresso%"
+        bat '''SET PROJECT_PATH="%HOMEPATH\\C:\\Users\\nivi.mor\\AndroidStudioProjects\\eribank-espresso-ci%"
         cd %PROJECT_PATH%
         git checkout master
         for /f %%i in (\'git merge ${branchName}\') do set VAR=%%i
