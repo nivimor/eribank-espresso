@@ -1,7 +1,7 @@
 node {
   // Mark the code checkout 'stage'....
   stage 'Obtaining Source Code From Repository'
-
+    deleteDir()
   // Checkout code from repository and update any submodules
   checkout([$class: 'GitSCM', branches: [[name: '**']],
     doGenerateSubmoduleConfigurations: false, extensions: [],
