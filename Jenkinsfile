@@ -13,7 +13,7 @@ node {
     } else {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     }
-    bat "./scripts/test.bat commitMsg branchName"
+    bat(\echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}\)
 
     def commitMsg
     if(isUnix()){
@@ -64,7 +64,12 @@ node {
 
 
     stage 'Merging to Master'
-        bat "bat "./scripts/merge-to-master.bat commitMsg branchName"
+        bat(/SET PROJECT_PATH="%HOMEPATH\AndroidStudioProjects\eribank-espresso-ci%"
+        cd %PROJECT_PATH%
+        git checkout master
+        git merge ${branchName}
+        git commit -am ${commitMsg} and merged to master"
+        git push origin master/)
 
     stage 'Publishing Artifacts'
 
