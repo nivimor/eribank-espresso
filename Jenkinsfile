@@ -66,12 +66,12 @@ node {
 
 
     stage 'Merging to Master'
-        bat "SET PROJECT_PATH="%HOMEPATH\AndroidStudioProjects\eribank-espresso-ci%"
+        /*bat "SET PROJECT_PATH="%HOMEPATH\AndroidStudioProjects\eribank-espresso-ci%"
         cd %PROJECT_PATH%
         git checkout master
         git merge %branchName%
         git commit -am "%commitMsg% and merged to master"
-        git push origin master"
+        git push origin master"*/
 
     stage 'Publishing Artifacts'
 
