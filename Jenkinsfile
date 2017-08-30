@@ -15,6 +15,15 @@ node {
     }
     echo "this is the branch ${branchName}"
 
+    def commitMsg
+    if(isUnix()){
+          commitMsg = sh(returnStdout: true, script: 'git log -1').trim()
+        } else {
+          commitMsg = bat(returnStdout: true, script: 'git log -1').trim()
+        }
+        echo "this is the branch ${commitMsg}"
+
+
   stage 'Building the App'
           if(isUnix()){
             sh "./gradlew assembleDebug"
@@ -60,7 +69,7 @@ node {
         cd %PROJECT_PATH%
         git checkout master
         git merge %branchName%
-        git commit -am "fixed payment issues and merged to master"
+        git commit -am "%commitMsg% and merged to master"
         git push origin master'''
 
     stage 'Publishing Artifacts'
