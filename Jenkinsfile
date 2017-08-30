@@ -13,7 +13,7 @@ node {
     } else {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     }
-    bat(/echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}/)
+
 
     def commitMsg
     if(isUnix()){
@@ -23,6 +23,7 @@ node {
         }
         echo "this is the msg ${commitMsg}"
 
+    bat(/echo this is the commit msg ${commitMsg} and this is the branch name ${branchName}/)
   stage 'Building the App'
           if(isUnix()){
             sh "./gradlew assembleDebug"
