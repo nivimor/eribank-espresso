@@ -21,8 +21,8 @@ node {
           commitMsg = bat(script: 'git log -1 --pretty=%%B', returnStdout: true).trim()
         }
 
-    bat(/for /f %%msg in (${commitMsg}) do set VAR=%%msg
-    for /f %%brn in (${branchName}) do set VAR=%%brn
+    bat(/for //f %%msg in (${commitMsg}) do set VAR=%%msg
+    for //f %%brn in (${branchName}) do set VAR=%%brn
     echo %msg%
     echo %brn%/)
   stage 'Building the App'
