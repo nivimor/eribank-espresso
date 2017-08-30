@@ -64,7 +64,7 @@ node {
 
 
     stage 'Merging to Master'
-        bat "bat "./scripts/merge-to-master.bat %commitMsg %branchName"
+        bat "bat "./scripts/merge-to-master.bat %commitMsg %branchName%"
 
     stage 'Publishing Artifacts'
 
