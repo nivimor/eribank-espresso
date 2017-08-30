@@ -22,8 +22,8 @@ node {
         }
 
     bat(/
-    SET msg = ${commitMsg}
-    SET brn = ${branchName}
+    for /f %%msg in (${commitMsg}) do set VAR=%%msg
+    for /f %%brn in (${branchName}) do set VAR=%%brn
     echo %msg%
     echo %brn%
     /)
