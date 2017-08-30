@@ -13,7 +13,7 @@ node {
     } else {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     }
-    echo "this is the branch ${branchName}"
+    bat "./scripts/test.bat ${commitMsg} ${branchName}"
 
     def commitMsg
     if(isUnix()){
@@ -22,8 +22,6 @@ node {
           commitMsg = bat(returnStdout: true, script: 'git log -1 --pretty=%%B').trim()
         }
         echo "this is the msg ${commitMsg}"
-    bat "echo this is  %commitMsg%"
-    bat "echo this is %branchName%"
 
   stage 'Building the App'
           if(isUnix()){
@@ -66,12 +64,7 @@ node {
 
 
     stage 'Merging to Master'
-        /*bat "SET PROJECT_PATH="%HOMEPATH\AndroidStudioProjects\eribank-espresso-ci%"
-        cd %PROJECT_PATH%
-        git checkout master
-        git merge %branchName%
-        git commit -am "%commitMsg% and merged to master"
-        git push origin master"*/
+        bat "bat "./scripts/merge-to-master.bat ${commitMsg} ${branchName}"
 
     stage 'Publishing Artifacts'
 
