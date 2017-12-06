@@ -9,7 +9,7 @@ node {
             sh "./scripts/upload-app.sh"
           }
           else{
-            bat "gradlew assembleDebug"
+            bat "gradlew.bat assembleDebug"
             bat "scripts/upload-app.bat"
           }
 
