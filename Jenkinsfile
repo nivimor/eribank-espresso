@@ -9,8 +9,8 @@ node {
             sh "./scripts/upload-app.sh"
           }
           else{
-            bat "./gradlew assembleDebug"
-            bat "./scripts/upload-app.bat"
+            bat "gradlew assembleDebug"
+            bat "scripts/upload-app.bat"
           }
 
   //branch name from Jenkins environment variables
