@@ -29,7 +29,7 @@ node {
           }
       else {
           parallel('Run appium tests': {
-                bat "gradlew testDebug --tests=tests.TestRunner"
+                bat "gradlew testDebug --tests tests.TestRunner"
                 },
              )
       }
