@@ -45,7 +45,7 @@ node {
           parallel('Run appium tests': {
                 bat "./gradlew testDebug --tests=tests.TestRunner"
                 },
-             })
+             )
       }
 
     stage 'Archiving Artifacts'
