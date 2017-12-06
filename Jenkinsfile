@@ -42,13 +42,13 @@ node {
 
     if(isUnix()){
               sh """"git checkout master \
-              git merge ${branchName} \
+              git merge $BRANCH_NAME \
               git commit -am ${commitMsg} and merged to master" \
               git push origin master"""
          }
          else{
               bat(/git checkout master
-              git merge ${branchName}
+              git merge %BRANCH_NAME%
               git commit -am ${commitMsg} and merged to master"
               git push origin master/)
          }
