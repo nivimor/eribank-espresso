@@ -27,7 +27,7 @@ public class EriBankPaymentTest{
         dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "cloud:com.experitest.ExperiBank");
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".LoginActivity");
         dc.setCapability("deviceQuery", "@os='android'");
-        driver = new AndroidDriver<AndroidElement>(new URL("https://beta.seetest.io:443/wd/hub"), dc);
+        driver = new AndroidDriver<AndroidElement>(new URL("https://sales.experitest.com:443/wd/hub"), dc);
     }
 
     @Test
