@@ -26,12 +26,10 @@ node {
   stage 'Building the App'
           if(isUnix()){
             sh "./gradlew assembleDebug"
-            sh "./gradlew assembleAndroidTest"
             sh "./scripts/upload-app.sh"
           }
           else{
             bat "./gradlew assembleDebug"
-            bat "./gradlew assembleAndroidTest"
             bat "./scripts/upload-app.bat"
           }
 
@@ -45,16 +43,12 @@ node {
           parallel('Run appium tests': {
               sh "./gradlew testDebug --tests=tests.TestRunner"
               },
-              'Run Espresso Test': {
-                sh "./scripts/run-tests.sh"
-              })
+             )
           }
       else {
           parallel('Run appium tests': {
                 bat "./gradlew testDebug --tests=tests.TestRunner"
                 },
-                'Run Espresso Test': {
-                    bat "./scripts/run-tests.bat"
              })
       }
 
@@ -62,19 +56,28 @@ node {
     //tell Jenkins to archive the apks
     archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
 
-
     stage 'Merging to Master'
-        bat(/SET PROJECT_PATH="%HOMEPATH\AndroidStudioProjects\eribank-espresso-ci%"
-        cd %PROJECT_PATH%
-        git checkout master
-        git merge ${branchName}
-        git commit -am ${commitMsg} and merged to master"
-        git push origin master/)
 
-    stage 'Publishing Artifacts'
+    if(isUnix()){
+              sh "git checkout master \
+              git merge ${branchName} \
+              git commit -am ${commitMsg} and merged to master" \
+              git push origin master"
+         }
+         else{
+              bat(/git checkout master
+              git merge ${branchName}
+              git commit -am ${commitMsg} and merged to master"
+              git push origin master/)
+         }
 
     stage 'clean'
-        bat "./gradlew clean"
+     if(isUnix()){
+          sh "./gradlew clean"
+     }
+     else{
+          bat "./gradlew clean"
+     }
 }
 
 // Pulls the android flavor out of the branch name the branch is prepended with /QA_
