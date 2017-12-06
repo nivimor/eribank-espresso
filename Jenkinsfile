@@ -55,10 +55,10 @@ node {
     stage 'Merging to Master'
 
     if(isUnix()){
-              sh "git checkout master \
+              sh """"git checkout master \
               git merge ${branchName} \
               git commit -am ${commitMsg} and merged to master" \
-              git push origin master"
+              git push origin master"""
          }
          else{
               bat(/git checkout master
