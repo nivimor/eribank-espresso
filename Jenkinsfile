@@ -2,6 +2,8 @@ node {
   // Mark the code checkout 'stage'....
   stage 'Obtaining Source Code From Repository'
     deleteDir()
+   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
+
 
   stage 'Building the App'
           if(isUnix()){
@@ -27,7 +29,7 @@ node {
           }
       else {
           parallel('Run appium tests': {
-                bat "./gradlew testDebug --tests=tests.TestRunner"
+                bat "gradlew testDebug --tests=tests.TestRunner"
                 },
              )
       }
@@ -56,7 +58,7 @@ node {
           sh "./gradlew clean"
      }
      else{
-          bat "./gradlew clean"
+          bat "gradlew clean"
      }
 }
 
