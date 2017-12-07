@@ -11,7 +11,7 @@ node {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD')
     }
 
-      echo "My branch is: ${branchName}"
+      echo "My branch is:" branchName
 
   stage 'Building the App'
           if(isUnix()){
