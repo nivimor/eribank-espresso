@@ -16,12 +16,11 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class EriBankPaymentTest{
     private String testName = "EriBank CICD - Payment";
-    protected AndroidDriver<AndroidElement> driver = null;
-    //private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
-    private String accessKey = "eyJ4cC51IjoxNjUwLCJ4cC5wIjoxNDM1LCJ4cC5tIjoiTVRRNU5UQXhOelV3T0RreE1BIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE4MTY0MzI4MDcsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.JBVpm1JBc8AEHSJm3nY8qv-7Orx0MfSN6D9BsxmfcSA";
+    private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
 
 
     DesiredCapabilities dc = new DesiredCapabilities();
+    protected AndroidDriver<AndroidElement> driver = null;
 
     @Before
     public void setUp() throws MalformedURLException {
