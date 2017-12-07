@@ -6,9 +6,9 @@ node {
 
     def branchName
     if(isUnix()){
-      branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+      branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD')
     } else {
-      branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+      branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD')
     }
     echo branchName
 
@@ -23,7 +23,7 @@ node {
           }
 
   //branch name from Jenkins environment variables
-  echo "My branch is: b"
+  echo "My branch is: %branchName%"
 
   stage 'Running Tests'
       if (isUnix()) {
@@ -49,13 +49,13 @@ node {
 
     if(isUnix()){
               sh """"git checkout master \
-              git merge $BRANCH_NAME \
+              git merge $branchName \
               git commit -am ${commitMsg} and merged to master" \
               git push origin master"""
          }
          else{
               bat(/git checkout master
-              git merge %BRANCH_NAME%
+              git merge %branchName%
               git commit -am ${commitMsg} and merged to master"
               git push origin master/)
          }
