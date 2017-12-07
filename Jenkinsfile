@@ -3,9 +3,9 @@ node {
   stage 'Obtaining Source Code From Repository'
     deleteDir()
    checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
-   def commit = bat(returnStdout: true, script: 'git log -1').trim()
+   def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
 
-   bat "git rev-list --format=%B --max-count=1g ${commit}"
+   bat "echo ${commit}"
     bat "echo this the branch %BRANCH_NAME%"
 
   stage 'Building the App'
