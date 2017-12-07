@@ -5,7 +5,7 @@ node {
    checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
 
    def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
-   String[] commitMsgPre = commit.split(" ")
+   List commitMsgPre = commit.split(" ")
     String commitMsg = commitMsgPre.getAt(-1)
     bat "echo this is the msg ${commitMsg}"
     bat "echo this the branch %BRANCH_NAME%"
