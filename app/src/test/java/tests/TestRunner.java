@@ -26,8 +26,7 @@ public class TestRunner {
 //                System.out.println(failure);
 //
 //            }
-//            exit(1);
-        }
+//            exit(1)
 
     }
 }
