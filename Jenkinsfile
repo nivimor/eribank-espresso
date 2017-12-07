@@ -2,9 +2,10 @@ node {
   // Mark the code checkout 'stage'....
   stage 'Obtaining Source Code From Repository'
     deleteDir()
-   checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
+   def commit = checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
 
     echo BRANCH_NAME
+    echo commit
     bat "echo %BRANCH_NAME%"
 
   stage 'Building the App'
