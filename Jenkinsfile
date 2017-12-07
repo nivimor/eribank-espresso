@@ -53,8 +53,8 @@ node {
               bat(/git checkout master
               git merge %branchName%
               git commit -am "${commitMsg} and merged to master"
-              git push https://\%gituser\%@github.com/nivimor/eribank-espresso.git master/)
-         }
+              git push https://${gituser}@github.com/nivimor/eribank-espresso.git master/)
+                   }
 
     stage 'clean'
      if(isUnix()){
