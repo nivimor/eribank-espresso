@@ -4,6 +4,13 @@ node {
     deleteDir()
    checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
 
+    def branchName
+    if(isUnix()){
+      branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+    } else {
+      branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+    }
+    echo branchName
 
   stage 'Building the App'
           if(isUnix()){
