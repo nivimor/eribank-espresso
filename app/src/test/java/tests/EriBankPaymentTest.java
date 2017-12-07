@@ -17,7 +17,9 @@ import io.appium.java_client.remote.MobileCapabilityType;
 public class EriBankPaymentTest{
     private String testName = "EriBank CICD - Payment";
     protected AndroidDriver<AndroidElement> driver = null;
-    private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
+    //private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
+    private String accessKey = "eyJ4cC51IjozMDAsInhwLnAiOjI5MywieHAubSI6Ik1UVXhNakk1TURjeE5URTVNUSIsImFsZyI6IkhTMjU2In0.eyJleHAiOjE4Mjc2NTA3MTUsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.nRS6DSRnc5La0suS0nyq5q9tBLezUOMkbaTneVf30wA";
+
 
     DesiredCapabilities dc = new DesiredCapabilities();
 
