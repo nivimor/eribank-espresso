@@ -4,11 +4,12 @@ node {
     deleteDir()
    checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
 
-   def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
-   List commitMsgPre = commit.split(" ")
+    def branchName = "feature_branch"
+    def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
+    List commitMsgPre = commit.split(" ")
     String commitMsg = commitMsgPre.getAt(-1)
     bat "echo this is the msg ${commitMsg}"
-    bat "echo this the branch %BRANCH_NAME%"
+    bat "echo this the branch %branchName%"
 
   stage 'Building the App'
           if(isUnix()){
@@ -44,15 +45,15 @@ node {
 
     if(isUnix()){
               sh """"git checkout master \
-              git merge ${BRANCH_NAME} \
+              git merge ${branchName} \
               git commit -am ${commitMsg} and merged to master" \
-              git push origin master"""
+              git push https://$GIT_HUB_USER:$GIT_HUB_PASS@github.com/nivimor/eribank-espresso.git master"""
          }
          else{
               bat(/git checkout master
-              git merge %BRANCH_NAME%
+              git merge %branchName%
               git commit -am "${commitMsg} and merged to master"
-              git push origin master/)
+              git push https://%GIT_HUB_USER%:%GIT_HUB_PASS%@github.com/nivimor/eribank-espresso.git master/)
          }
 
     stage 'clean'
