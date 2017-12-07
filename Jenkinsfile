@@ -3,7 +3,7 @@ node {
   stage 'Obtaining Source Code From Repository'
     deleteDir()
    checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
-
+    String gituser = $GIT_HUB_USER_PASS
     def branchName = "feature_branch"
     def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     List commitMsgPre = commit.split(" ")
@@ -47,13 +47,13 @@ node {
               sh """"git checkout master \
               git merge ${branchName} \
               git commit -am ${commitMsg} and merged to master" \
-              git push https://$GIT_HUB_USER:$GIT_HUB_PASS@github.com/nivimor/eribank-espresso.git master"""
+              git push https://GIT@github.com/nivimor/eribank-espresso.git master"""
          }
          else{
               bat(/git checkout master
               git merge %branchName%
               git commit -am "${commitMsg} and merged to master"
-              git push https://GIT_HUB_USER:GIT_HUB_PASS@github.com/nivimor/eribank-espresso.git master/)
+              git push https://\%gituser\%@github.com/nivimor/eribank-espresso.git master/)
          }
 
     stage 'clean'
