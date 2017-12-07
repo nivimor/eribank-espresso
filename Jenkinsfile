@@ -55,7 +55,7 @@ node {
               bat(/git checkout master
               git merge origin\/feature_branch
               git commit -am "${commitMsg} and merged to master"
-              git push https:\${GIT_USERNAME}:\${GIT_PASSWORD}/\@github.com/nivimor/eribank-espresso.git master/)
+              git push https:\${GIT_USERNAME}:\${GIT_PASSWORD}\/@github.com/nivimor/eribank-espresso.git master/)
          }
 
     stage 'clean'
