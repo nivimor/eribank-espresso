@@ -53,7 +53,7 @@ node {
 
                bat "cmd /c echo protocol=https & echo.host=https://github.com/nivimor/eribank-espresso.git & echo.username=${GIT_USERNAME} & echo.password=${GIT_PASSWORD} | git credential approve "
               bat(/git checkout master
-              git merge origin/feature_branch
+              git merge origin\/feature_branch
               git commit -am "${commitMsg} and merged to master"
               git push origin master/)
          }
