@@ -52,10 +52,12 @@ node {
          else{
               bat(/git checkout master
               git merge %branchName%
+              git remote remove origin
+              git remote add https://nivimor:krPtbN34$asD@https://github.com/nivimor/eribank-espresso.git
               git commit -am "${commitMsg} and merged to master"
               withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                   bat(\git tag -a some_tag -m 'Jenkins'\)
-                  bat(\git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/nivimor/eribank-espresso.gi --tags\)
+                  bat(\git push origin master --tags\)
               }
               git push origin master/)
          }
