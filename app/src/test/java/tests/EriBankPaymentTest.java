@@ -43,7 +43,6 @@ public class EriBankPaymentTest{
         driver.findElement(By.xpath("//*[@id='nameTextField']")).sendKeys("Test");
         driver.findElement(By.xpath("//*[@id='amountTextField']")).sendKeys("10");
         driver.findElement(By.xpath("//*[@id='countryTextField']")).sendKeys("US");
-        driver.hideKeyboard();
         driver.findElement(By.xpath("//*[@id='sendPaymentButton']")).click();
         driver.findElement(By.xpath("//*[@id='button1']")).click();
     }
