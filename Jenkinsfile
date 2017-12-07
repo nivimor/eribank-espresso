@@ -10,7 +10,8 @@ node {
     } else {
       branchName = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD')
     }
-    echo branchName
+
+      echo "My branch is: ${branchName}"
 
   stage 'Building the App'
           if(isUnix()){
@@ -21,9 +22,6 @@ node {
             bat "gradlew assembleDebug"
             bat "scripts/upload-app.bat"
           }
-
-  //branch name from Jenkins environment variables
-  echo "My branch is: %branchName%"
 
   stage 'Running Tests'
       if (isUnix()) {
