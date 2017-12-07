@@ -4,7 +4,7 @@ node {
     deleteDir()
    checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
 
-    echo ${BRANCH_NAME}
+    echo BRANCH_NAME
     bat "echo %BRANCH_NAME%"
 
   stage 'Building the App'
