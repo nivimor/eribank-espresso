@@ -9,7 +9,7 @@ node {
     List commitMsgPre = commit.split(" ")
     String commitMsg = commitMsgPre.getAt(-1)
     bat "echo this is the msg ${commitMsg}"
-    bat "echo this the branch %branchName%"
+    bat "echo this the branch ${branchName}"
 
   stage 'Building the App'
           if(isUnix()){
@@ -53,7 +53,7 @@ node {
 
                bat "cmd /c echo protocol=https & echo.host=https://github.com/nivimor/eribank-espresso.git & echo.username=${GIT_USERNAME} & echo.password=${GIT_PASSWORD} | git credential approve "
               bat(/git checkout master
-              git merge %branchName%
+              git merge ${branchName}
               git commit -am "${commitMsg} and merged to master"
               git push origin master/)
          }
