@@ -41,6 +41,14 @@ node {
     //tell Jenkins to archive the apks
     archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
 
+    stage 'clean'
+         if(isUnix()){
+              sh "./gradlew clean"
+         }
+         else{
+              bat "gradlew clean"
+         }
+
     stage 'Merging to Master'
 
     if(isUnix()){
@@ -57,13 +65,7 @@ node {
               git push https:\/\/${GIT_USERNAME}:${GIT_PASSWORD}@github.com\/nivimor\/eribank-espresso.git master/)
          }
 
-    stage 'clean'
-     if(isUnix()){
-          sh "./gradlew clean"
-     }
-     else{
-          bat "gradlew clean"
-     }
+
 }
 
 // Pulls the android flavor out of the branch name the branch is prepended with /QA_
