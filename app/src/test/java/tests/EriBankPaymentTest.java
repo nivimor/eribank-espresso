@@ -11,6 +11,7 @@ import java.net.URL;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class EriBankPaymentTest{
@@ -25,8 +26,8 @@ public class EriBankPaymentTest{
         dc.setCapability("accessKey", accessKey);
         dc.setCapability("fullReset", true);
         dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank/.LoginActivity");
-//        dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "cloud:com.experitest.ExperiBank");
-//        dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".LoginActivity");
+        dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "cloud:com.experitest.ExperiBank");
+/       dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".LoginActivity");
         dc.setCapability("deviceQuery", "@os='android'");
         driver = new AndroidDriver<AndroidElement>(new URL("https://cloud.experitest.com:443/wd/hub"), dc);
     }
