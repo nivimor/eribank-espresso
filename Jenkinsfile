@@ -6,7 +6,7 @@ node {
 
    def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
    List commitMsgPre = commit.split(" ")
-   commitMsgPre.removeAt(0).removeAt(1).removeAt(2).removeAt(3)
+   commitMsgPre.removeAt(0)
    String commitMsg = commitMsgPre.join(" ")
    bat "echo this is the msg ${commitMsg}"
     bat "echo this the branch %BRANCH_NAME%"
