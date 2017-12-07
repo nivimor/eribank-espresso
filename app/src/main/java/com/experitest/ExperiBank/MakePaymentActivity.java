@@ -106,7 +106,7 @@ public class MakePaymentActivity extends Activity {
 		
 		alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle("EriBank");
-		alertDialog.setMessage("Are you sure you want to send this payment ?");
+		alertDialog.setMessage("Are you sure you want to pay ?");
 		alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
 		alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
