@@ -50,15 +50,11 @@ node {
               git push origin master"""
          }
          else{
+
+               bat "cmd /c echo protocol=https & echo.host=https://github.com/nivimor/eribank-espresso.git & echo.username=${GIT_USERNAME} & echo.password=${GIT_PASSWORD} | git credential approve "
               bat(/git checkout master
               git merge %branchName%
-              git remote remove origin
-              git remote add https://(nivimor:krPtbN34$asD)@https://github.com/nivimor/eribank-espresso.git origin
               git commit -am "${commitMsg} and merged to master"
-              withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                  bat(\git tag -a some_tag -m 'Jenkins'\)
-                  bat(\git push origin master --tags\)
-              }
               git push origin master/)
          }
 
