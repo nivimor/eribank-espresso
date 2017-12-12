@@ -3,15 +3,15 @@ node {
   stage 'Obtaining Source Code From Repository'
     deleteDir()
    checkout([$class: 'GitSCM', branches: [[name: '*/feature_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9012e5cc-475f-4e1f-959c-4f5997eeae70', url: 'https://github.com/nivimor/eribank-espresso.git']]])
-
+    def commit = ""
     def branchName = "feature_branch"
     if(isUnix()){
         sh "echo before commit"
-        def commit = sh(returnStdout: true, script: 'git log -1 --oneline').trim()
+        commit = sh(returnStdout: true, script: 'git log -1 --oneline').trim()
         sh "echo after commit"
     }
     else{
-        def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
+        commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     }
     echo commit
     List commitMsgPre = commit.split(" ")
