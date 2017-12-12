@@ -67,7 +67,3 @@ node {
 
 
 }
-
-// Pulls the android flavor out of the branch name the branch is prepended with /QA_
-//build your gradle flavor, passes the current build number as a parameter to gradle
-
