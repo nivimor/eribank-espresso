@@ -8,8 +8,14 @@ node {
     def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     List commitMsgPre = commit.split(" ")
     String commitMsg = commitMsgPre.getAt(-1)
-    bat "echo this is the msg ${commitMsg}"
-    bat "echo this the branch ${branchName}"
+    if(isUnix()){
+          sh "echo this is the msg ${commitMsg}"
+          sh "echo this the branch ${branchName}"
+    }
+    else{
+         bat "echo this is the msg ${commitMsg}"
+         bat "echo this the branch ${branchName}"
+    }
 
   stage 'Building the App'
           if(isUnix()){
