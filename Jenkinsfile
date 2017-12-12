@@ -13,7 +13,7 @@ node {
     else{
         commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     }
-    echo commit
+    println commit
     List commitMsgPre = commit.split(" ")
     String commitMsg = commitMsgPre.getAt(-1)
     if(isUnix()){
