@@ -6,9 +6,7 @@ node {
     def commit = ""
     def branchName = "feature_branch"
     if(isUnix()){
-        sh "echo before commit"
         commit = sh(returnStdout: true, script: 'git log -1 --oneline').trim()
-        sh "echo after commit"
     }
     else{
         commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
