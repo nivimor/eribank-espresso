@@ -6,10 +6,12 @@ node {
 
     def branchName = "feature_branch"
     if(isUnix()){
-        String commit = sh(returnStdout: true, script: 'git log -1 --oneline').trim()
+        sh "echo before commit"
+        def commit = sh(returnStdout: true, script: 'git log -1 --oneline').trim()
+        sh "echo after commit"
     }
     else{
-        String commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
+        def commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     }
 
     List commitMsgPre = commit.split(" ")
