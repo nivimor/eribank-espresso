@@ -1,5 +1,5 @@
 before_install:
-  - chomd -R +x ./scripts
+  - chmod -R +x ./scripts
 
 language: android
 android:
