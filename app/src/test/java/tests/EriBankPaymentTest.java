@@ -16,7 +16,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class EriBankPaymentTest{
     private String testName = "EriBank CICD - Payment";
-    private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
+    //private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
 
 
     DesiredCapabilities dc = new DesiredCapabilities();
@@ -24,13 +24,13 @@ public class EriBankPaymentTest{
 
     @Before
     public void setUp() throws MalformedURLException {
-        dc.setCapability("accessKey", accessKey);
+        dc.setCapability("accessKey", "eyJ4cC51IjozMDAsInhwLnAiOjI5MywieHAubSI6Ik1UVXhNakk1TURjeE5URTVNUSIsImFsZyI6IkhTMjU2In0.eyJleHAiOjE4MzA0NTMzMTksImlzcyI6ImNvbS5leHBlcml0ZXN0In0.qxK0Uh-hPCllhVYrklLJ0qTkqEiMtT2PZku4MkziqEs");
         dc.setCapability("fullReset", true);
         dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank/.LoginActivity");
         dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "cloud:com.experitest.ExperiBank");
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".LoginActivity");
         dc.setCapability("deviceQuery", "@os='android' and @manufacture='samsung'");
-        driver = new AndroidDriver<AndroidElement>(new URL("https://cloud.experitest.com:443/wd/hub"), dc);
+        driver = new AndroidDriver<AndroidElement>(new URL("https://cloud.seetest.io:443/wd/hub"), dc);
     }
 
     @Test

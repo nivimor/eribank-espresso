@@ -19,7 +19,7 @@ public class TestRunner {
 
         Class[] cls = {
                 EriBankPaymentTest.class,
-                EriBankPaymentTest.class,
+                EriBankPaymentTest.class
                 /*EriBankPaymentTest.class,
                 EriBankPaymentTest.class,
                 EriBankPaymentTest.class,
