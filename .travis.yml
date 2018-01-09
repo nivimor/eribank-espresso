@@ -1,7 +1,8 @@
-language: android
-android:
 before_install:
   - chomd -R +x ./scripts
+
+language: android
+android:
 
   componenets:
     - tools
