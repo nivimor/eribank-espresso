@@ -1,4 +1,5 @@
 echo ${TRAVIS_BRANCH}
+git stash
 echo "switching to master"
 git checkout -b master
 echo "pulling master"
