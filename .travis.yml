@@ -10,4 +10,3 @@ android:
       - ./gradlew testDebug --tests=tests.TestRunner
       - ./gradlew clean
       - ./scripts/merge.sh
-      -
