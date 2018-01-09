@@ -1,6 +1,10 @@
 language: android
 android:
+before_install:
+  - chomd -R +x ./scripts
+
   componenets:
+    - tools
     - build-tools-26.0.2
     - android-26
 
