@@ -4,9 +4,9 @@ android:
     - tools
     - platform-tools
 
-    script:
-      - ./gradlew assembleDebug
-      - ./scripts/upload-app.sh
-      - ./gradlew testDebug --tests=tests.TestRunner
-      - ./gradlew clean
-      - ./scripts/merge.sh
+script:
+  - ./gradlew assembleDebug
+  - ./scripts/upload-app.sh
+  - ./gradlew testDebug --tests=tests.TestRunner
+  - ./gradlew clean
+  - ./scripts/merge.sh
