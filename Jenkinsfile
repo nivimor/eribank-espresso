@@ -11,9 +11,15 @@ node {
     else{
         commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     }
-    println commit
-    List commitMsgPre = commit.split(" ")
-    String commitMsg = commitMsgPre.getAt(-1)
+
+    stage 'Getting the commit message'
+        String commitMsg = ""
+        println commit
+        List commitMsgPre = commit.split(" ")
+        for(int i=1; i<commitMsgPre.size(); i++){
+            commitMsg += commitMsgPre.getAt(i) + " "
+        }
+
     if(isUnix()){
           sh "echo this is the msg ${commitMsg}"
           sh "echo this the branch ${branchName}"
@@ -26,7 +32,7 @@ node {
   stage 'Building the App'
           if(isUnix()){
             sh "./gradlew assembleDebug"
-            sh "./scripts/upload-app.sh"
+            sh "sh ./scripts/upload-app.sh"
           }
           else{
             bat "gradlew assembleDebug"
@@ -64,9 +70,10 @@ node {
     stage 'Merging to Master'
 
     if(isUnix()){
-              sh """"git checkout master \
-              git merge ${branchName} \
-              git commit -am ${commitMsg} and merged to master" \
+              sh """git checkout ${branchName};
+              git checkout master;
+              git merge ${branchName};
+              git commit -am "${commitMsg} and merged to master";
               git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nivimor/eribank-espresso.git master"""
          }
          else{
