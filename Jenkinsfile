@@ -70,7 +70,8 @@ node {
     stage 'Merging to Master'
 
     if(isUnix()){
-              sh """git checkout master;
+              sh """git checkout ${branchName};
+              git checkout master;
               git merge ${branchName};
               git commit -am "${commitMsg} and merged to master";
               git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nivimor/eribank-espresso.git master"""
