@@ -12,20 +12,15 @@ node {
         commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     }
 
-    stage 'get commit message'{
-
+    stage 'Gettign commit message'
         String commitMsg = ""
         println commit
         List commitMsgPre = commit.split(" ")
         for(int i=1; i<commitMsgPre.size(); i++){
             commitMsg += commitMsgPre.getAt(i) + " "
         }
-    }
 
-    println commitMsg
     if(isUnix()){
-
-    }
           sh "echo this is the msg ${commitMsg}"
           sh "echo this the branch ${branchName}"
     }
