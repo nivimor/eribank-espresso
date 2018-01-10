@@ -11,9 +11,10 @@ node {
     else{
         commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     }
-    println commit
-    List commitMsgPre = commit.split(" ")
-    String commitMsg = commitMsgPre.getAt(-1)
+     List commitMsgPre = commit.split(" ")
+     commitMsgPre.removeAt(0)
+     String commitMsg = commitMsgPre.join(" ")
+
     if(isUnix()){
           sh "echo this is the msg ${commitMsg}"
           sh "echo this the branch ${branchName}"
@@ -66,7 +67,7 @@ node {
     if(isUnix()){
               sh """"git checkout master \
               git merge ${branchName} \
-              git commit -am ${commitMsg} and merged to master" \
+              git commit -am "${commitMsg} and merged to master" \
               git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nivimor/eribank-espresso.git master"""
          }
          else{
