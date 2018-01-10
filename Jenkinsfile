@@ -12,7 +12,7 @@ node {
         commit = bat(returnStdout: true, script: 'git log -1 --oneline').trim()
     }
 
-    stage 'Getting the commit message'
+    stage 'Getting commit message'
         String commitMsg = ""
         println commit
         List commitMsgPre = commit.split(" ")
