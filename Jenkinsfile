@@ -26,7 +26,7 @@ node {
   stage 'Building the App'
           if(isUnix()){
             sh "./gradlew assembleDebug"
-            sh "./scripts/upload-app.sh"
+            sh "sh ./scripts/upload-app.sh"
           }
           else{
             bat "gradlew assembleDebug"
