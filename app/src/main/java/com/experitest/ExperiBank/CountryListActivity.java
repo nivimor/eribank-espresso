@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class CountryListActivity extends Activity {
 	ListView countryListView;
 	private ArrayAdapter<String> listAdapter;
-	private String[] countriesArray = new String[] { "Netherlands", "India", "USA", "Austria", "Iceland", "United Arab Emirates", "Switzerland", "Croatia", "Norway", "New Zealand", "Iceland", "Greece", "Italy", "Ireland", "China", "Japan", "France", "Russia", "Australlia", "Canada", "Brazil", "Indonesia",
+	private String[] countriesArray = new String[] { "etherlands", "India", "USA", "Austria", "Iceland", "United Arab Emirates", "Switzerland", "Croatia", "Norway", "New Zealand", "Iceland", "Greece", "Italy", "Ireland", "China", "Japan", "France", "Russia", "Australlia", "Canada", "Brazil", "Indonesia",
 			"Nigeria", "Bangladesh", "Mexico", "Philippines", "Vietnam", "Ethiopia", "Egypt", "Germany", "Iran", "Turkey", "Thailand", "United Kingdom", "South Africa", "South Korea", "Myanmar", "Spain", "Colombia", "Ukraine", "Tanzania",
 			"Argentina", "Romania" };
 
