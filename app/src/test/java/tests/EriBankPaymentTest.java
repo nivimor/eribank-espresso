@@ -18,17 +18,23 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class EriBankPaymentTest{
     private String testName = "EriBank CICD - Payment";
-    private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
+    // private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
+    private String accessKey = "eyJ4cC51IjozMDAsInhwLnAiOjI5MywieHAubSI6Ik1UVXhNakk1TURjeE5URTVNUSIsImFsZyI6IkhTMjU2In0.eyJleHAiOjE4Mjc2NTA3MTUsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.nRS6DSRnc5La0suS0nyq5q9tBLezUOMkbaTneVf30wA";
 
     DesiredCapabilities dc = new DesiredCapabilities();
     protected AndroidDriver<AndroidElement> driver = null;
     public  ArrayList newCountries = new ArrayList<String>(Arrays.asList("Austria", "United Arab Emirates", "Croatia", "Iceland", "Netherlands"));
-    public static int i = 0;
+    public static int i = -1;
+    public int countryIndex;
 
+    public EriBankPaymentTest(){
+        i += 1;
+        countryIndex = i;
+    }
 
     @Before
     public void setUp() throws MalformedURLException, InterruptedException {
-
+        System.out.println(countryIndex);
         dc.setCapability("accessKey", accessKey);
         dc.setCapability("fullReset", true);
         dc.setCapability("instrumented", true);
@@ -37,11 +43,12 @@ public class EriBankPaymentTest{
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".LoginActivity");
         dc.setCapability("deviceQuery", "@os='android' and @manufacture='samsung'");
         driver = new AndroidDriver<AndroidElement>(new URL("https://cloud.seetest.io:443/wd/hub"), dc);
+
     }
 
     @Test
     public void chooseCountry() {
-        i = i + 1;
+        System.out.println(newCountries.get(countryIndex));
         driver.findElement(By.xpath("//*[@id='usernameTextField']")).sendKeys("company");
         driver.findElement(By.xpath("//*[@id='passwordTextField']")).sendKeys("company");
         driver.findElement(By.xpath("//*[@id='loginButton']")).click();
@@ -50,15 +57,16 @@ public class EriBankPaymentTest{
         driver.findElement(By.xpath("//*[@id='nameTextField']")).sendKeys("Test");
         driver.findElement(By.xpath("//*[@id='amountTextField']")).sendKeys("10");
         driver.findElement(By.xpath("//*[@id='countryButton']")).click();
-        driver.findElement(By.xpath("//*[@text='" + newCountries.get(i)+ "']")).click();
+        driver.findElement(By.xpath("//*[@text='" + newCountries.get(countryIndex)+ "']")).click();
         driver.findElement(By.xpath("//*[@id='sendPaymentButton']")).click();
         driver.findElement(By.xpath("//*[@id='button1']")).click();
+
     }
 
 
     @After
     public void tearDown() {
-//        driver.quit();
+       driver.quit();
     }
 
 }
