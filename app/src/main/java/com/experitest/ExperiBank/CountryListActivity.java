@@ -1,8 +1,5 @@
 package com.experitest.ExperiBank;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +9,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class CountryListActivity extends Activity {
 	ListView countryListView;
 	private ArrayAdapter<String> listAdapter;
-	private String[] countriesArray = new String[] { "India", "USA", "Iceland", "Greenland", "Switzerland", "Norway", "New Zealand", "Greece", "Italy", "Ireland", "China", "Japan", "France", "Russia", "Australlia", "Canada", "Brazil", "Indonesia",
+	private String[] countriesArray = new String[] { "Netherlands", "India", "USA", "Austria", "Iceland", "United Arab Emirates", "Switzerland", "Croatia", "Norway", "New Zealand", "Iceland", "Greece", "Italy", "Ireland", "China", "Japan", "France", "Russia", "Australlia", "Canada", "Brazil", "Indonesia",
 			"Nigeria", "Bangladesh", "Mexico", "Philippines", "Vietnam", "Ethiopia", "Egypt", "Germany", "Iran", "Turkey", "Thailand", "United Kingdom", "South Africa", "South Korea", "Myanmar", "Spain", "Colombia", "Ukraine", "Tanzania",
 			"Argentina", "Romania" };
 

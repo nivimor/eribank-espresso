@@ -15,15 +15,12 @@ public class TestRunner {
     @Test
     public void test() {
 
-        System.out.println("yes");
-
         Class[] cls = {
                 EriBankPaymentTest.class,
-                EriBankPaymentTest.class
-                /*EriBankPaymentTest.class,
                 EriBankPaymentTest.class,
                 EriBankPaymentTest.class,
-                EriBankPaymentTest.class,*/
+                EriBankPaymentTest.class,
+                EriBankPaymentTest.class,
         };
 
         //Parallel among classes

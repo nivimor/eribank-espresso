@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -18,14 +20,18 @@ public class EriBankPaymentTest{
     private String testName = "EriBank CICD - Payment";
     private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
 
-
     DesiredCapabilities dc = new DesiredCapabilities();
     protected AndroidDriver<AndroidElement> driver = null;
+    public  ArrayList newCountries = new ArrayList<String>(Arrays.asList("Austria", "United Arab Emirates", "Croatia", "Iceland", "Netherlands"));
+    public static int i = 0;
+
 
     @Before
-    public void setUp() throws MalformedURLException {
+    public void setUp() throws MalformedURLException, InterruptedException {
+
         dc.setCapability("accessKey", accessKey);
         dc.setCapability("fullReset", true);
+        dc.setCapability("instrumented", true);
         dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank/.LoginActivity");
         dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "cloud:com.experitest.ExperiBank");
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".LoginActivity");
@@ -34,7 +40,8 @@ public class EriBankPaymentTest{
     }
 
     @Test
-    public void testUntitled() {
+    public void chooseCountry() {
+        i = i + 1;
         driver.findElement(By.xpath("//*[@id='usernameTextField']")).sendKeys("company");
         driver.findElement(By.xpath("//*[@id='passwordTextField']")).sendKeys("company");
         driver.findElement(By.xpath("//*[@id='loginButton']")).click();
@@ -42,7 +49,8 @@ public class EriBankPaymentTest{
         driver.findElement(By.xpath("//*[@id='phoneTextField']")).sendKeys("123456");
         driver.findElement(By.xpath("//*[@id='nameTextField']")).sendKeys("Test");
         driver.findElement(By.xpath("//*[@id='amountTextField']")).sendKeys("10");
-        driver.findElement(By.xpath("//*[@id='countryTextField']")).sendKeys("US");
+        driver.findElement(By.xpath("//*[@id='countryButton']")).click();
+        driver.findElement(By.xpath("//*[@text='" + newCountries.get(i)+ "']")).click();
         driver.findElement(By.xpath("//*[@id='sendPaymentButton']")).click();
         driver.findElement(By.xpath("//*[@id='button1']")).click();
     }
@@ -50,7 +58,7 @@ public class EriBankPaymentTest{
 
     @After
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 
 }
