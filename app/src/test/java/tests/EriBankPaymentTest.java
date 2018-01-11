@@ -17,7 +17,7 @@ import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class EriBankPaymentTest{
-    private String testName = "EriBank CICD - Payment";
+    private String testName = "EriBank CICD - Add Countries to List";
     private String accessKey = System.getenv("SEETEST_IO_ACCESS_KEY");
 
     DesiredCapabilities dc = new DesiredCapabilities();
